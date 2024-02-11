@@ -205,6 +205,21 @@ h6 {
   color: #149ddd;
 }
 
+.linkedin {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Заокруглює кутів, щоб створити круг */
+    background-color: #0077b5; /* Колір фону для кнопки LinkedIn */
+    text-align: center; /* Вирівнює текст у центрі кнопки */
+    line-height: 40px; /* Центрує вертикально текст у кнопці */
+    color: white; /* Колір тексту у кнопці */
+}
+  
+.linkedin i {
+    font-size: 20px; /* Змінює розмір іконки */
+}
+
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
