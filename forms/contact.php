@@ -1,41 +1,88 @@
-<?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+<?php include("contactform.php"); ?>
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'andrii.nahornyi.ca@gmail.com';
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title>PHP Email form</title>
+		
+		<meta name ="viewport" content ="width=device-width, initial-scale=1.0"> 
+		
+		<!--Bootstrap CSS CDN-->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!---jQuery CDN-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+	</head>
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+	<body>
+			
+		<!-- container for Contact-->
+		<div class="container-fluid">
+			<div class ="Contact" id="ContactLink">
+				<h2 class="text-center large-gray-font">Contact</h2>
+				
+				<br/>
+				<br/>
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<form class="form-horizontal" role="form" method="post" action="index.php">
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="<?php echo htmlspecialchars($_POST['name']); ?>">
+										<?php echo "<p class='text-danger'>$errName</p>";?>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-sm-2 control-label">Email</label>
+									<div class="col-sm-10">
+										<input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="<?php echo htmlspecialchars($_POST['email']); ?>">
+										<?php echo "<p class='text-danger'>$errEmail</p>";?>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="message" class="col-sm-2 control-label">Message</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="4" name="message"><?php echo htmlspecialchars($_POST['message']);?></textarea>
+										<?php echo "<p class='text-danger'>$errMessage</p>";?>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="human" class="col-sm-2 control-label">2 + 3 = ?</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
+										<?php echo "<p class='text-danger'>$errHuman</p>";?>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-10 col-sm-offset-2">
+										<input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-10 col-sm-offset-2">
+										<?php echo $result; ?>	
+									</div>
+								</div>
+							</form> 
+						</div> <!-- ending div for contact form-->
+					</div><!-- ending div for container-->
+				</div><!-- ending div for row -->
+			</div><!-- ending div for contact -->		
+		</div><!-- ending div for contact container-->
+		
+		
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
-?>
+		<!--Bootstrap Js CDN-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		
+		
+	</body>
+</html>
