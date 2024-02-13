@@ -90,6 +90,13 @@ h6 {
   border: 8px solid #2c2f3f;
 }
 
+#header .creditss {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 16px;
+  color: #eaebf0;
+}
+
 #header .profile h1 {
   font-size: 24px;
   margin: 0;
