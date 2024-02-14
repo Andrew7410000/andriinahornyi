@@ -785,8 +785,9 @@ section {
 }
 
 .testimonials .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50%;
+  width: 320px;
+  height: 225px;
+  border-radius: 10px; /* Прямокутна форма */
   margin: 0 auto;
 }
 
