@@ -338,11 +338,11 @@ section {
 }
 
 .section-title {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .section-title h2 {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: bold;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -354,7 +354,7 @@ section {
   content: "";
   position: absolute;
   display: block;
-  width: 50px;
+  width: 150px;
   height: 3px;
   background: #149ddd;
   bottom: 0;
@@ -452,7 +452,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Akills
+# Skills
 --------------------------------------------------------------*/
 .skills .progress {
   height: 60px;
