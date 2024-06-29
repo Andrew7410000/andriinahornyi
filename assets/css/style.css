@@ -329,7 +329,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 40px 0;
   overflow: hidden;
 }
 
@@ -342,7 +342,7 @@ section {
 }
 
 .section-title h2 {
-  font-size: 58px;
+  font-size: 42px;
   font-weight: bold;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -354,7 +354,7 @@ section {
   content: "";
   position: absolute;
   display: block;
-  width: 150px;
+  width: 175px;
   height: 3px;
   background: #149ddd;
   bottom: 0;
