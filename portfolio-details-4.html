@@ -10,15 +10,25 @@
         .code-block-container {
             position: relative;
             background-color: #2d2d2d;
-            padding: 1rem;
             border-radius: 5px;
             overflow: auto;
             font-family: Consolas, 'Courier New', Courier, monospace;
+            margin-bottom: 1.5rem;
+        }
+        .code-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #444;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-size: 14px;
         }
         .copy-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+            display: flex;
+            align-items: center;
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -30,12 +40,29 @@
         .copy-button:hover {
             background-color: #45a049;
         }
+        .copy-button svg {
+            margin-right: 5px;
+        }
+        pre {
+            margin: 0;
+            padding: 1rem;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Приклад коду в code block</h1>
     <div class="code-block-container">
-        <button class="copy-button" onclick="copyCode(this)">Copy code</button>
+        <div class="code-block-header">
+            <span>HTML</span>
+            <button class="copy-button" onclick="copyCode(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 96 960 960" width="16">
+                    <path d="M480 976v-60h400V336h60v580q0 24-18 42t-42 18H480Zm-200-200q-24 0-42-18t-18-42V176q0-24 18-42t42-18h580q24 0 42 18t18 42v540q0 24-18 42t-42 18H280Zm0-60h580V176H280v540Zm-60 200q-24 0-42-18t-18-42V336h60v580h400v60H220Zm60-740V176v540-540Z"/>
+                </svg>
+                Copy code
+            </button>
+        </div>
         <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="uk"&gt;
@@ -102,11 +129,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
         function copyCode(button) {
-            const codeBlock = button.nextElementSibling.innerText;
+            const codeBlock = button.parentElement.nextElementSibling.innerText;
             navigator.clipboard.writeText(codeBlock).then(() => {
                 button.textContent = 'Copied!';
                 setTimeout(() => {
-                    button.textContent = 'Copy code';
+                    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 96 960 960" width="16"><path d="M480 976v-60h400V336h60v580q0 24-18 42t-42 18H480Zm-200-200q-24 0-42-18t-18-42V176q0-24 18-42t42-18h580q24 0 42 18t18 42v540q0 24-18 42t-42 18H280Zm0-60h580V176H280v540Zm-60 200q-24 0-42-18t-18-42V336h60v580h400v60H220Zm60-740V176v540-540Z"/></svg> Copy code';
                 }, 2000);
             }).catch(() => {
                 button.textContent = 'Failed to copy';
