@@ -790,7 +790,7 @@ section {
 .testimonials .testimonial-item {
   box-sizing: content-box;
   text-align: center;
-  min-height: 1320px;
+  min-height: 320px;
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -876,7 +876,7 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact {
-  padding-bottom: 130px;
+  padding-bottom: 100px;
 }
 
 .contact .info {
