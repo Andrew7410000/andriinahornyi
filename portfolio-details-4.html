@@ -187,27 +187,75 @@
                     </button>
                   </div>
                   <pre><code class="language-python">
-                    # Python program to check if year is a leap year or not
+import arcpy
 
-                    year = 2000
-                    
-                    # To get year (integer input) from the user
-                    # year = int(input("Enter a year: "))
-                    
-                    # divided by 100 means century year (ending with 00)
-                    # century year divided by 400 is leap year
-                    if (year % 400 == 0) and (year % 100 == 0):
-                        print("{0} is a leap year".format(year))
-                    
-                    # not divided by 100 means not a century year
-                    # year divided by 4 is a leap year
-                    elif (year % 4 ==0) and (year % 100 != 0):
-                        print("{0} is a leap year".format(year))
-                    
-                    # if not divided by both 400 (century year) and 4 (not century year)
-                    # year is not leap year
-                    else:
-                        print("{0} is not a leap year".format(year))
+# Set the workspace and enable overwrite output
+arcpy.env.workspace = r"C:\Study\GIS\Portfolio\Saamis Tepee\Saamis Tepee.gdb"
+arcpy.env.overwriteOutput = True
+
+# Get the input feature class from user input
+inputFeature = arcpy.GetParameterAsText(0)
+
+# Merge input feature classes into a single feature class named "Merge"
+input_feature_classes = [inputFeature, "Tepee"]
+arcpy.Merge_management(input_feature_classes, "Merge")
+
+# Create a line feature class from the merged features named "Line"
+arcpy.management.PointsToLine("Merge", "Line")
+
+# Calculate the directional mean of the line feature class and store the result in a table named "Linetower"
+input_feature_class = "Line"
+output_table = "LineSaamis"
+arcpy.stats.DirectionalMean(input_feature_class, output_table, "DIRECTION")
+
+# Add fields "Direction" and "Position" to the "Linetower" table
+arcpy.management.AddField(output_table, "Direction", "TEXT")
+arcpy.management.AddField(output_table, "Position", "TEXT")
+
+# Calculate values for the "Direction" and "Position" fields based on the "CompassA" field
+# Define the expression and code blocks for field calculation
+expression = """calculate_direction(!CompassA!)"""
+code = """def calculate_direction(CompassField):
+    if CompassField <= 180:
+        value = 180 - CompassField
+    elif CompassField <= 270:
+        value = 270 - CompassField
+    elif CompassField <= 360:
+        value = 360 - CompassField
+    else:
+        value = CompassField
+    return value"""
+arcpy.management.CalculateField(output_table, "Direction", expression, "PYTHON3", code)
+
+expression1 = """calculate_position(!CompassA!)"""
+code1 = """def calculate_position(CompassField):
+    if CompassField <= 180:
+        return "SE"
+    elif CompassField <= 270:
+        return "SW"
+    elif CompassField <= 360:
+        return "NW"
+    else:
+        return "NE" """
+arcpy.management.CalculateField(output_table, "Position", expression1, "PYTHON3", code1)
+
+# Print a message indicating successful completion of field calculations
+print("Field calculation for 'Direction' and 'Position' completed successfully.")
+
+# Retrieve values of "Direction" and "Position" fields from the "Linetower" table using search cursors
+direction_values = [row[0] for row in arcpy.da.SearchCursor(output_table, "Direction")]
+position_values = [row[0] for row in arcpy.da.SearchCursor(output_table, "Position")]
+
+# Add a message to ArcGIS indicating the direction and position values
+arcpy.AddMessage("The Direction is {0} Angle {1}".format(direction_values, position_values))
+
+# Access the current ArcGIS project and its map
+aprx = arcpy.mp.ArcGISProject("CURRENT")
+map = aprx.listMaps()[0]
+
+# Add the "Linetower" layer to the map
+layer_file = r"C:\Study\GIS\Portfolio\Saamis Tepee\Saamis Tepee.gdb\LineSaamis"
+map.addDataFromPath(layer_file)
 
                   </code></pre>
                 </div>
