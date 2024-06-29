@@ -16,10 +16,12 @@
     /* Styles for custom scrollbar */
     ::-webkit-scrollbar {
       width: 12px; /* width of the scrollbar */
+      background-color: transparent;
     }
 
     ::-webkit-scrollbar-track {
-      background: transparent; /* make track fully transparent */
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
