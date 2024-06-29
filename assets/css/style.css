@@ -1060,14 +1060,16 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-  padding: 20px 0;
+  padding: 26px 0;
   background: #f9f9f9;
+  margin: 0;
 }
 
 .breadcrumbs h2 {
   font-weight: 700;
   font-size: 26px;
   color: #173b6c;
+  margin: 0;
 }
 
 .breadcrumbs ol {
