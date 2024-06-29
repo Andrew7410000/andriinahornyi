@@ -344,8 +344,8 @@ section {
 .section-title h2 {
   font-size: 42px;
   font-weight: bold;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   position: relative;
   color: #173b6c;
 }
