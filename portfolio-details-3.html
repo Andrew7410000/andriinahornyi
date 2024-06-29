@@ -81,6 +81,37 @@
         scrollbar-color: #888 #444;
     }
 
+    /* CSS для відступу між кнопками та краєм сторінки */
+    .sharethis-inline-share-buttons {
+        margin-bottom: 20px; /* Задайте бажаний відступ знизу */
+    }
+
+    /* Styles for custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* width of the scrollbar */
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #149ddd; /* color of the scrollbar */
+      border-radius: 6px; /* roundness of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #149ddd; /* color of the scrollbar on hover */
+    }
+
+    .content {
+        height: 1000px; /* Example content height */
+        overflow-y: scroll; /* Enable vertical scrollbar */
+    }
+
+
     .code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
   </style>
 
@@ -187,75 +218,35 @@
                     </button>
                   </div>
                   <pre><code class="language-python">
-import arcpy
+from osgeo import gdal
 
-# Set the workspace and enable overwrite output
-arcpy.env.workspace = r"C:\Study\GIS\Portfolio\Saamis Tepee\Saamis Tepee.gdb"
-arcpy.env.overwriteOutput = True
+# Example coordinates for a point in Berlin
+longitude = 13.4050
+latitude = 52.5200
 
-# Get the input feature class from user input
-inputFeature = arcpy.GetParameterAsText(0)
+# Open raster dataset
+ds = gdal.Open(r"C:\Study\GIS\Tools&Data\srtm_germany_dtm\srtm_germany_dtm.tif")
 
-# Merge input feature classes into a single feature class named "Merge"
-input_feature_classes = [inputFeature, "Tepee"]
-arcpy.Merge_management(input_feature_classes, "Merge")
+# Get GeoTransform and Projection information
+# Gives array with upper left coordinate, pixel size for x and y
+gt = ds.GetGeoTransform()
 
-# Create a line feature class from the merged features named "Line"
-arcpy.management.PointsToLine("Merge", "Line")
+# Convert to pixel coordinates with ratio and size of pixel and rounding
+x_pixel = int((longitude - gt[0]) / gt[1])
+y_pixel = int((gt[3] - latitude) / -gt[5])
 
-# Calculate the directional mean of the line feature class and store the result in a table named "Linetower"
-input_feature_class = "Line"
-output_table = "LineSaamis"
-arcpy.stats.DirectionalMean(input_feature_class, output_table, "DIRECTION")
+# Fetch the band that you want to read from
+band = ds.GetRasterBand(1)
 
-# Add fields "Direction" and "Position" to the "Linetower" table
-arcpy.management.AddField(output_table, "Direction", "TEXT")
-arcpy.management.AddField(output_table, "Position", "TEXT")
+# Read pixel data as 2D array - parameters are: x_pixel, y_pixel, window size x, window size y
+value = band.ReadAsArray(x_pixel, y_pixel, 1, 1)
 
-# Calculate values for the "Direction" and "Position" fields based on the "CompassA" field
-# Define the expression and code blocks for field calculation
-expression = """calculate_direction(!CompassA!)"""
-code = """def calculate_direction(CompassField):
-    if CompassField <= 180:
-        value = 180 - CompassField
-    elif CompassField <= 270:
-        value = 270 - CompassField
-    elif CompassField <= 360:
-        value = 360 - CompassField
-    else:
-        value = CompassField
-    return value"""
-arcpy.management.CalculateField(output_table, "Direction", expression, "PYTHON3", code)
+# Close the dataset
+ds = None
 
-expression1 = """calculate_position(!CompassA!)"""
-code1 = """def calculate_position(CompassField):
-    if CompassField <= 180:
-        return "SE"
-    elif CompassField <= 270:
-        return "SW"
-    elif CompassField <= 360:
-        return "NW"
-    else:
-        return "NE" """
-arcpy.management.CalculateField(output_table, "Position", expression1, "PYTHON3", code1)
-
-# Print a message indicating successful completion of field calculations
-print("Field calculation for 'Direction' and 'Position' completed successfully.")
-
-# Retrieve values of "Direction" and "Position" fields from the "Linetower" table using search cursors
-direction_values = [row[0] for row in arcpy.da.SearchCursor(output_table, "Direction")]
-position_values = [row[0] for row in arcpy.da.SearchCursor(output_table, "Position")]
-
-# Add a message to ArcGIS indicating the direction and position values
-arcpy.AddMessage("The Direction is {0} Angle {1}".format(direction_values, position_values))
-
-# Access the current ArcGIS project and its map
-aprx = arcpy.mp.ArcGISProject("CURRENT")
-map = aprx.listMaps()[0]
-
-# Add the "Linetower" layer to the map
-layer_file = r"C:\Study\GIS\Portfolio\Saamis Tepee\Saamis Tepee.gdb\LineSaamis"
-map.addDataFromPath(layer_file)
+# Print the pixel value
+print(f'The pixel value at location {longitude}, {latitude} is: {value[0][0]}m')
+# Output: The pixel value at location 13.405, 52.52 is: 48m
 
                   </code></pre>
                 </div>
@@ -266,10 +257,10 @@ map.addDataFromPath(layer_file)
             <div class="portfolio-info">
               <h3>Project information</h3>
               <ul>
-                <li><strong>Name</strong>: Switzerland</li>
-                <li><strong>Project date</strong>: 9<sup>th</sup> February, 2024</li>
-                <li><strong>Software</strong>: ArcGIS Pro</li>
-                <li><strong>Source</strong>: Airbus, USGS, NGA, NASA, NOAA, CGIAR, GEBCO, NLS, OS, NMA, Geodatastyrelsen, GSA, GSI, EuroStat </li>
+                <li><strong>Name</strong>: Pixels Values Reading</li>
+                <li><strong>Creation date</strong>: 29<sup>th</sup> March, 2024</li>
+                <li><strong>Language</strong>: Python</li>
+                <li><strong>Code editor</strong>: Visual Studio Code</li>
               </ul>
             </div>
           </div>
