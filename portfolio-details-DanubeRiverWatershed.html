@@ -12,7 +12,39 @@
     .sharethis-inline-share-buttons {
         margin-bottom: 20px; /* Задайте бажаний відступ знизу */
     }
+
+    /* CSS для відступу між кнопками та краєм сторінки */
+    .sharethis-inline-share-buttons {
+        margin-bottom: 20px; /* Задайте бажаний відступ знизу */
+    }
+
+    /* Styles for custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* width of the scrollbar */
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #149ddd; /* color of the scrollbar */
+      border-radius: 6px; /* roundness of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #149ddd; /* color of the scrollbar on hover */
+    }
+
+    .content {
+        height: 1000px; /* Example content height */
+        overflow-y: scroll; /* Enable vertical scrollbar */
+    }
+
   </style>
+
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -108,13 +140,13 @@
               <h3>Project information</h3>
               <ul>
                 <li><strong>Name</strong>: Danube River Watershed</li>
-                <li><strong>Project date</strong>: 2<sup>nd</sup> November, 2023</li>
+                <li><strong>Creation date</strong>: 2<sup>nd</sup> November, 2023</li>
                 <li><strong>Software</strong>: ArcGIS Pro</li>
                 <li><strong>Source</strong>: N/A</li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <p>The Danube River Watershed Map intricately outlines the expansive network of rivers, tributaries, and ecosystems across Central and Eastern Europe. The main stem of the Danube, depicted in blue, weaves through diverse landscapes. The map showcases the interconnectedness of the watershed, illustrating its vital role in supporting biodiversity, local economies, and cultural heritage.</p>
+              <p style="text-align:justify;">The Danube River Watershed Map intricately outlines the expansive network of rivers, tributaries, and ecosystems across Central and Eastern Europe. The main stem of the Danube, depicted in blue, weaves through diverse landscapes. The map showcases the interconnectedness of the watershed, illustrating its vital role in supporting biodiversity, local economies, and cultural heritage.</p>
             </div>
           </div>
         </div>

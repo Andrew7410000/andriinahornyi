@@ -12,6 +12,37 @@
     .sharethis-inline-share-buttons {
         margin-bottom: 20px; /* Задайте бажаний відступ знизу */
     }
+
+    /* CSS для відступу між кнопками та краєм сторінки */
+    .sharethis-inline-share-buttons {
+        margin-bottom: 20px; /* Задайте бажаний відступ знизу */
+    }
+
+    /* Styles for custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* width of the scrollbar */
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #149ddd; /* color of the scrollbar */
+      border-radius: 6px; /* roundness of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #149ddd; /* color of the scrollbar on hover */
+    }
+
+    .content {
+        height: 1000px; /* Example content height */
+        overflow-y: scroll; /* Enable vertical scrollbar */
+    }
+
   </style>
 
   <meta content="" name="description">
@@ -108,18 +139,17 @@
               <h3>Project information</h3>
               <ul>
                 <li><strong>Name</strong>: Northeast Alberta Mining 1984-2023</li>
-                <li><strong>Project date</strong>: 16<sup>th</sup> December, 2023</li>
+                <li><strong>Creation date</strong>: 16<sup>th</sup> December, 2023</li>
                 <li><strong>Software</strong>: ArcGIS Living Atlas Landsat Explorer, Adobe Express</li>
                 <li><strong>Source</strong>: Esri, USGS, NASA</li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <p>This animated map illustrates the dynamic growth and evolution of mining activities, located in the heart of Alberta's oil sands region. Through a series of time-lapse visuals, you can witness the development of various mines, depicting their establishment, expansion, and integration into the local landscape over the years.</p>
+              <p style="text-align:justify;">This animated map illustrates the dynamic growth and evolution of mining activities, located in the heart of Alberta's oil sands region. Through a series of time-lapse visuals, you can witness the development of various mines, depicting their establishment, expansion, and integration into the local landscape over the years.</p>
             </div>
           </div>
         </div>
       </div>
-      
     </section><!-- End Portfolio Details Section -->
 
     <div class="sharethis-inline-share-buttons"></div>
