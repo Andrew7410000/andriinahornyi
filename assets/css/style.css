@@ -653,6 +653,15 @@ section {
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
+.portfolio-section-title h2 {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  color: #173b6c;
+}
+
 .portfolio-details {
   padding-top: 40px;
 }
@@ -684,7 +693,7 @@ section {
 }
 
 .portfolio-details .portfolio-info h3 {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
