@@ -12,7 +12,39 @@
     .sharethis-inline-share-buttons {
         margin-bottom: 20px; /* Задайте бажаний відступ знизу */
     }
+
+    /* CSS для відступу між кнопками та краєм сторінки */
+    .sharethis-inline-share-buttons {
+        margin-bottom: 20px; /* Задайте бажаний відступ знизу */
+    }
+
+    /* Styles for custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* width of the scrollbar */
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #149ddd; /* color of the scrollbar */
+      border-radius: 6px; /* roundness of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #149ddd; /* color of the scrollbar on hover */
+    }
+
+    .content {
+        height: 1000px; /* Example content height */
+        overflow-y: scroll; /* Enable vertical scrollbar */
+    }
+
   </style>
+
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -86,11 +118,8 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-          </ol>
+        <div class="section-title">
+            <h2>Portfolio Details</h2>
         </div>
 
       </div>
@@ -108,13 +137,13 @@
               <h3>Project information</h3>
               <ul>
                 <li><strong>Name</strong>: USA Zip Codes</li>
-                <li><strong>Project date</strong>: 1<sup>st</sup> November, 2023</li>
+                <li><strong>Creation date</strong>: 1<sup>st</sup> November, 2023</li>
                 <li><strong>Software</strong>: ArcGIS Pro</li>
                 <li><strong>Source</strong>: Unated States Census Bureau </li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <p>This map showcases the distribution of ZIP codes across the United States, offering a comprehensive overview of postal regions and their boundaries. Through density markers, it delineates areas with varying densities of ZIP codes, providing insights into population distribution, urbanization patterns, and regional demographics across the diverse landscapes of the USA.</p>
+              <p style="text-align:justify;">This map showcases the distribution of ZIP codes across the United States, offering a comprehensive overview of postal regions and their boundaries. Through density markers, it delineates areas with varying densities of ZIP codes, providing insights into population distribution, urbanization patterns, and regional demographics across the diverse landscapes of the USA.</p>
             </div>
           </div>
         </div>

@@ -12,7 +12,39 @@
     .sharethis-inline-share-buttons {
         margin-bottom: 20px; /* Задайте бажаний відступ знизу */
     }
+
+    /* CSS для відступу між кнопками та краєм сторінки */
+    .sharethis-inline-share-buttons {
+        margin-bottom: 20px; /* Задайте бажаний відступ знизу */
+    }
+
+    /* Styles for custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* width of the scrollbar */
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #149ddd; /* color of the scrollbar */
+      border-radius: 6px; /* roundness of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #149ddd; /* color of the scrollbar on hover */
+    }
+
+    .content {
+        height: 1000px; /* Example content height */
+        overflow-y: scroll; /* Enable vertical scrollbar */
+    }
+
   </style>
+
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -86,11 +118,8 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-          </ol>
+        <div class="section-title">
+            <h2>Portfolio Details</h2>
         </div>
 
       </div>
@@ -108,13 +137,13 @@
               <h3>Project information</h3>
               <ul>
                 <li><strong>Name</strong>: Rocky Mountains Park, Alberta, 1888</li>
-                <li><strong>Project date</strong>: 29<sup>th</sup> March, 2024</li>
+                <li><strong>Creation date</strong>: 29<sup>th</sup> March, 2024</li>
                 <li><strong>Software</strong>: ArcGIS Pro, Blender, </li>
                 <li><strong>Source</strong>: University of Calgary Library, OpenStreetMap</li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <p>I redesigned and enhanced a section of a map depicting Banff National Park (previously known as Rocky Mountains Park) in Alberta, dating back to 1888. Clearly, it's an antiquated depiction, offering insights into the park's conditions during its early years and the surrounding landscape of that period. My motivation to recreate this map was influenced by both the park's natural allure and my own firsthand experiences there. I trust you'll find enjoyment in exploring this map too.</p>
+              <p style="text-align:justify;">I redesigned and enhanced a section of a map depicting Banff National Park (previously known as Rocky Mountains Park) in Alberta, dating back to 1888. Clearly, it's an antiquated depiction, offering insights into the park's conditions during its early years and the surrounding landscape of that period. My motivation to recreate this map was influenced by both the park's natural allure and my own firsthand experiences there. I trust you'll find enjoyment in exploring this map too.</p>
             </div>
           </div>
         </div>
