@@ -37,6 +37,7 @@
     #map {
       height: 600px; /* Set the height of the map */
       width: 90%; /* Set the width of the map */
+      margin: 0 auto; /* Center-align the map */
     }
 
   </style>
@@ -698,7 +699,7 @@
 
       <div id="map"></div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100"></div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
         <script>
             var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
