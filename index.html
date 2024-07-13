@@ -682,6 +682,16 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-map">
             <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/MapOfMassachusetts.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/MapOfMassachusetts.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details-MapOfMassachusetts" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-map">
+            <div class="portfolio-wrap">
               <img src="assets/img/portfolio/HurricaneMap.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/HurricaneMap.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
@@ -714,6 +724,10 @@
                 }).addTo(map);
 
                 // Add markers or other features as needed
+                var marker = L.marker([42.3, -72]).addTo(map)
+                    .bindPopup('<a href="portfolio-details-MapOfMassachusetts" class="info-link">Map of Massachusetts</a>')
+                    .openPopup();
+                
                 var marker = L.marker([50.913, 14.903]).addTo(map)
                     .bindPopup('<a href="portfolio-details-Turow.html" class="info-link">Turów coal mine</a>')
                     .openPopup();
