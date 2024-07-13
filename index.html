@@ -697,26 +697,25 @@
         
       </div>
 
-      <div class="info">
-        <div id="map"></div>
+      <div class="col-lg-5">
+        <div id="map" class="col-lg-5"></div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+            <script>
+                var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-          <script>
-              var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-              L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              }).addTo(map);
-
-              // Add markers or other features as needed
-              var marker = L.marker([51.505, -0.09]).addTo(map)
-                  .bindPopup('A marker')
-                  .openPopup();
-              
-              var marker = L.marker([61.505, -10.09]).addTo(map)
-                  .bindPopup('2')
-                  .openPopup();
-          </script>
+                // Add markers or other features as needed
+                var marker = L.marker([51.505, -0.09]).addTo(map)
+                    .bindPopup('A marker')
+                    .openPopup();
+                
+                var marker = L.marker([61.505, -10.09]).addTo(map)
+                    .bindPopup('2')
+                    .openPopup();
+            </script>
       </div>
      
     </section><!-- End Portfolio Section -->
