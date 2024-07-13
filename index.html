@@ -691,7 +691,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>The Project Map</h2>
+          <h2>Map of The Projects</h2>
           <p></p>
         </div>
         
@@ -711,6 +711,10 @@
             // Add markers or other features as needed
             var marker = L.marker([51.505, -0.09]).addTo(map)
                 .bindPopup('A marker')
+                .openPopup();
+            
+            var marker = L.marker([61.505, -10.09]).addTo(map)
+                .bindPopup('2')
                 .openPopup();
         </script>
       </div>
