@@ -36,7 +36,7 @@
 
     #map {
       height: 600px; /* Set the height of the map */
-      width: 95%; /* Set the width of the map */
+      width: 80%; /* Set the width of the map */
       margin: 0 auto; /* Center-align the map */
     }
 
@@ -345,6 +345,24 @@
             <h3 class="resume-title">Professional Experience</h3>
 
             <div class="resume-item">
+              <h4>Geomatics Technician</h4>
+              <h5>September 2024 - October 2024</h5>
+              <p><em>Measurement Sciences Inc. (Geomatics & Engineering), Calgary, Canada</em></p>
+              <ul>
+                <li style="text-align:justify;"> </li>
+              </ul>
+            </div>
+            
+            <div class="resume-item">
+              <h4>Survey Assistant</h4>
+              <h5>July 2024 - October 2024</h5>
+              <p><em>Measurement Sciences Inc. (Geomatics & Engineering), Calgary, Canada</em></p>
+              <ul>
+                <li style="text-align:justify;"> </li>
+              </ul>
+            </div>
+            
+            <div class="resume-item">
               <h4>GIS Technician</h4>
               <h5>May 2024 - Present</h5>
               <p><em>Biocone Inc. (Environmental Consulting), Calgary, Canada</em></p>
@@ -355,7 +373,7 @@
                 <li style="text-align:justify;">Applied remote sensing techniques to interpret aerial and satellite imagery, improving spatial data quality for environmental monitoring and analysis.</li>
                 <li style="text-align:justify;">Created visually compelling maps and infographics to enhance the clarity and impact of spatial data representation, employing Adobe Photoshop and Blender.</li>
                 <li style="text-align:justify;">Integrated Microsoft Office 365 Suite into daily workflows, ensuring effective prioritization and timely project delivery.</li>
-                <li style="text-align:justify;">Gained valuable experience with professional software such as ArcGIS Online/Enterprise, ArcGIS Field Apps, Adobe Suite, PostGIS, FME, QGIS, Google Earth Engine, AutoCAD, ENVI, Pix4D, and others.</li>
+                <li style="text-align:justify;">Gained valuable experience with professional software such as ArcGIS Online, ArcGIS Field Apps, PostGIS, FME, QGIS, AutoCAD, Pix4D, and others.</li>
               </ul>
             </div>
 
@@ -366,7 +384,7 @@
               <ul>
                 <li style="text-align:justify;">Participated in the realization of Real Property Reports and the production of related maps.</li>
                 <li style="text-align:justify;">Assisted field surveys and collected geographic data using Total Station and GPS equipment, recording measurements obtained during survey activities.</li>
-                <li style="text-align:justify;">Supported a Crew Chief in locating property boundaries, buildings, structures, and other natural or humanmadefeatures.</li>
+                <li style="text-align:justify;">Supported a Crew Chief in locating property boundaries, buildings, structures, and other natural or humanmade features.</li>
                 <li style="text-align:justify;">Maintained and organized company surveying tools, equipment, and vehicles with no losses or damage.</li>
                 <li style="text-align:justify;">Participated in daily safety briefings and followed all safety protocols, contributing to a zero-incident record.</li>
               </ul>
@@ -460,6 +478,16 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
+          <div class="col-lg-4 col-md-6 portfolio-item filter-map">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/MediterraneanSea.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/MediterraneanSea.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details-MediterraneanSea.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+          
           <div class="col-lg-4 col-md-6 portfolio-item filter-script">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/5.jpg" class="img-fluid" alt="">
@@ -718,7 +746,7 @@
       </div>
 
       <div>
-        <div id="map" width="85%" ></div>
+        <div id="map"></div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
             <script>
                 var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
@@ -728,6 +756,10 @@
                 }).addTo(map);
 
                 // Add markers or other features as needed
+                var marker = L.marker([36.53, 18.84]).addTo(map)
+                    .bindPopup('<a href="portfolio-details-MediterraneanSea" class="info-link">Mediterranean Sea Map</a>')
+                    .openPopup();
+
                 var marker = L.marker([42.3, -72]).addTo(map)
                     .bindPopup('<a href="portfolio-details-MapOfMassachusetts" class="info-link">Map of Massachusetts</a>')
                     .openPopup();
@@ -793,6 +825,22 @@
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
+            <div class="swiper-slide">
+              <div class="testimonial-item" data-aos="fade-up">
+                <img src="assets/img/testimonials/NASA2.jpg" class="testimonial-img" alt="">
+                <h3>Earth Observations for Humanitarian Applications</h3>
+                <h4>NASA's Applied Remote Sensing Training</h4>
+              </div>
+            </div><!-- End testimonial item -->
+            
+            <div class="swiper-slide">
+              <div class="testimonial-item" data-aos="fade-up">
+                <img src="assets/img/testimonials/NASA1.jpg" class="testimonial-img" alt="">
+                <h3>Applications of CO2 Measurements for Climate-Related Studies</h3>
+                <h4>NASA's Applied Remote Sensing Training</h4>
+              </div>
+            </div><!-- End testimonial item -->
+            
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up">
                 <img src="assets/img/testimonials/GICHD.jpg" class="testimonial-img" alt="">
