@@ -303,7 +303,7 @@
             </div>
             <div class="resume-item">
               <h4>Advanced Diploma in GIS</h4>
-              <h5>September 2024 - June 2027</h5>
+              <h5>January 2025 - September 2027</h5>
               <p><em>British Columbia Institute of Technology, Burnaby</em></p>
             </div>
 
@@ -719,8 +719,10 @@
 
       <div>
         <div id="map"></div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-            <script>
+          <div class="row gy-4">
+            <div class="col-lg-8">
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+              <script>
                 var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -776,7 +778,9 @@
                     .bindPopup('<a href="portfolio-details-AlbertaSurface.html" target="_blank">Alberta Surface Map</a>')
                     .openPopup();
 
-            </script>
+              </script>
+            </div>
+          </div>
       </div>
     </section><!-- End Map Section --> 
     
