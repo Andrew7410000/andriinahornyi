@@ -718,11 +718,9 @@
       </div>
 
       <div>
-        <div id="map"></div>
-          <div class="row gy-4">
-            <div class="col-lg-8">
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-              <script>
+        <div id="map" width="85%" ></div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+            <script>
                 var map = L.map('map').setView([0, 0], 2); // Initialize the map with a view
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -778,9 +776,7 @@
                     .bindPopup('<a href="portfolio-details-AlbertaSurface.html" target="_blank">Alberta Surface Map</a>')
                     .openPopup();
 
-              </script>
-            </div>
-          </div>
+            </script>
       </div>
     </section><!-- End Map Section --> 
     
