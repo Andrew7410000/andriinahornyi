@@ -465,6 +465,16 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-map">
             <div class="portfolio-wrap">
+              <img src="assets/img/thumbnails/UN_Outputs.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/UN_Outputs.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details-Afghanistan.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 portfolio-item filter-map">
+            <div class="portfolio-wrap">
               <img src="assets/img/thumbnails/MelbourneLC.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/MelbourneLC.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
@@ -762,6 +772,16 @@
 
                 // Add markers or other features as needed
 
+                var marker = L.marker([34.517, 69.183]).addTo(map)
+                .bindPopup(`
+                    <div>
+                        <a href="portfolio-details-MelbourneLC.html" class="info-link">
+                            <img src="assets/img/thumbnails/UN_Outputs.jpg" alt="Afghanistan UN Map" style="width:100%; height:auto;">
+                            <p>Afghanistan UN Map</p>
+                        </a>
+                    </div>
+                `);
+                
                 var marker = L.marker([-37.814, 144.963]).addTo(map)
                 .bindPopup(`
                     <div>
@@ -929,6 +949,14 @@
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
+            <div class="swiper-slide">
+              <div class="testimonial-item" data-aos="fade-up">
+                <img src="assets/img/testimonials/BasicPM.jpg" class="testimonial-img" alt="">
+                <h3>Basic Project Management</h3>
+                <h4>Project Management Institute</h4>
+              </div>
+            </div><!-- End testimonial item -->
+            
             <div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up">
                 <img src="assets/img/testimonials/ModernGeoApps.jpg" class="testimonial-img" alt="">
